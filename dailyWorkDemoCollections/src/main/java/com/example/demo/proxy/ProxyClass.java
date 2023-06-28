@@ -1,7 +1,7 @@
 package com.example.demo.proxy;
 
 import com.alibaba.fastjson.JSONObject;
-import com.example.demo.intface.impl.Demo4DynamicProxyImpl;
+import com.example.demo.impl.Demo4DynamicProxyImpl;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

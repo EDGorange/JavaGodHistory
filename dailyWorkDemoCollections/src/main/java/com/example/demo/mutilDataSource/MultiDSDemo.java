@@ -1,3 +1,4 @@
+/*
 package com.example.demo.mutilDataSource;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -7,11 +8,13 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
+*/
 /**
  * @description: br
  * @author: wang.chengcheng
  * @create: 2023-06-26 14:02
- **/
+ **//*
+
 @Configuration
 public class MultiDSDemo {
     @Bean("masterDataSource")
@@ -23,4 +26,4 @@ public class MultiDSDemo {
 
 public class RoutingDataSource extends AbstractRoutingDataSource{
 
-}
+}*/
