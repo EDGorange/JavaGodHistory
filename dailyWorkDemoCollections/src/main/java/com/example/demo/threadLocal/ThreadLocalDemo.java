@@ -48,6 +48,7 @@ public class ThreadLocalDemo {
         MyThreadLocal.set("3", Thread.currentThread().getName());
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         for (int i = 0; i < 3; i++) {
+
             System.out.println(executorService
                     .submit(new Callable<String>() {
                         @Override
