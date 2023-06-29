@@ -1,8 +1,10 @@
 package com.example.demo.dateTime;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 /**
  * @description: br
@@ -23,5 +25,8 @@ public class DateTimeDemo4Java8 {
         System.out.println(du.toDays());
         System.out.println(du.toHours());
         System.out.println(du.toMinutes());
+        System.out.println("-----------------");
+        System.out.println(Instant.now());
+        System.out.println(Instant.now().plus(8, ChronoUnit.HOURS));
     }
 }
