@@ -2,6 +2,7 @@ package com.example.demo.threadLocal;
 
 import org.springframework.util.StringUtils;
 
+import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -119,12 +120,20 @@ public class ThreadLocalDemo {
         System.out.println(split[0]);
         System.out.println(split[1]);
 
-        String test3 = "898";
+
+        System.out.println("**********************************");
+        String test3 = "1059911582FRANCHISEE_MAIN_BEND";
         String orderNo3 = test3.replaceAll("[a-zA-Z_]", "");
-        String[] split3 = test3.split(StringUtils.trimAllWhitespace(orderNo3));
+        System.out.println(orderNo3);
+        orderNo = StringUtils.trimAllWhitespace(orderNo3);
+        String[] split3 = test3.split(StringUtils.trimAllWhitespace(orderNo));
+        boolean existIR = Arrays.asList(split3).contains("IR");
         System.out.println(split3.length);
-        System.out.println(split3[0]);
-        System.out.println(split3[1]);
+        if (!existIR && split.length > 0) {
+            System.out.println(split3[0]);
+            System.out.println(split3[1]);
+        }
+
 
     }
 

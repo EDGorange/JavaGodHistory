@@ -79,6 +79,13 @@
         <version>5.8.10</version>
     </dependency>
 
+    <dependency>
+        <groupId>com.github.ben-manes.caffeine</groupId>
+        <artifactId>caffeine</artifactId>
+        <!--https://mvnrepository.com/artifact/com.github.ben-manes.caffeine/caffeinez 找最新版-->
+        <version>2.9.1</version>
+    </dependency>
+
 </dependencies>
 
 <build>
