@@ -202,6 +202,17 @@ public class DemoApplication {
         System.out.println(man1.getPhone());
         System.out.println(man1.getHome().getAddress());
         System.out.println(man.getHome().getAddress());
+        String serviceSubType = "P2P LC";
+        ArrayList<String> p2pSubtypeList = new ArrayList<>();
+        p2pSubtypeList.add("P2P LC");
+        p2pSubtypeList.add("P2P LC ACROSS STATE");
+        p2pSubtypeList.add("INTERNATIONAL P2P LC");
+        if (p2pSubtypeList.contains(serviceSubType)) {
+            System.out.println("123");
+        }
+        else {
+            System.out.println("456");
+        }
 
     }
 
