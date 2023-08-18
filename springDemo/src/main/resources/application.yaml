@@ -1,0 +1,49 @@
+server:
+
+  port: 8089
+
+spring:
+
+  datasource:
+    mysql:
+
+      url: jdbc:mysql://127.0.0.1:3306/test1?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+
+      username: root
+
+      password: 123456
+
+      type: com.alibaba.druid.pool.DruidDataSource
+
+      driver-class-name: com.mysql.jdbc.Driver
+
+    oracle:
+      url: jdbc:oracle:thin:@10.10.179.165:1521/ODW
+
+      username: osswfm
+
+      password: smart123
+
+      type: com.alibaba.druid.pool.DruidDataSource
+
+      driver-class-name: oracle.jdbc.driver.OracleDriver
+
+mybatis:
+
+  mapper-locations: classpath:/mapper/*Dao.xml
+
+  typeAliasesPackage: com.example.springdemo.entity
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging: ##配置sql打印日志
+#  level:
+#    com.leo.mapper: debug
+#    com.example.springdemo.mapper: debug
+#    com.example.demo.mapper: DEBUG
+#    org.springframework.web: DEBUG
+#    java.sql: DEBUG
+#    org.mybatis.spring: DEBUG
+  config: classpath:loback-spring.xml
+
+
+
