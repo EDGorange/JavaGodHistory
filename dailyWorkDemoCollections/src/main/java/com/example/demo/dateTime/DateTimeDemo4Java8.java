@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
 /**
  * @description: br
@@ -28,5 +29,23 @@ public class DateTimeDemo4Java8 {
         System.out.println("-----------------");
         System.out.println(Instant.now());
         System.out.println(Instant.now().plus(8, ChronoUnit.HOURS));
+    }
+
+
+    public static void localDateTime2Date() {
+
+        String timeString = "2023-08-25 10:30:00";
+        String pattern = "yyyy-MM-dd HH:mm:ss";
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+        LocalDateTime localDateTime = LocalDateTime.parse(timeString, formatter);
+
+        Date date = convertToDate(localDateTime);
+        System.out.println(date);
+
+    }
+
+    private static Date convertToDate(LocalDateTime localDateTime) {
+        return java.sql.Timestamp.valueOf(localDateTime);
     }
 }

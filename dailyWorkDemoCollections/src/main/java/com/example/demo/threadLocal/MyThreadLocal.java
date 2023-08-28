@@ -14,9 +14,10 @@ public final class MyThreadLocal {
 
     }
 
-    private static  ThreadLocal<Map<String, String>> myThreadLocal = new InheritableThreadLocal<Map<String, String>>() {
+    private static final   ThreadLocal<Map<String, String>> myThreadLocal = new InheritableThreadLocal<Map<String, String>>() {
         @Override
         protected Map<String, String> initialValue() {
+            System.out.println("我是final的ThreadLocal的初始类");
             return new HashMap<>();
         }
     };
@@ -35,5 +36,10 @@ public final class MyThreadLocal {
            return stringStringMap.get(key);
         }
         return null;
+    }
+
+    private void testDemo() {
+        myThreadLocal.get();
+        //myThreadLocal = new ThreadLocal<>();
     }
 }

@@ -1,8 +1,5 @@
 package com.example.demo.threadLocal;
 
-import org.springframework.util.StringUtils;
-
-import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -28,24 +25,28 @@ public class ThreadLocalDemo {
     }
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
-        /*House house = new House();
+        House house = new House();
         for (int i = 0; i < 5; i++) {
+            int finalI = i;
             new Thread(() -> {
                 try {
-                    int randomNum = RandomUtil.randomInt(10);
-                    for (int j = 0; j < randomNum; j++) {
-                        house.saleHouse();
-                    }
-                    System.out.println(Thread.currentThread().getName() + " 卖出: " + house.threadLocal.get() + "RandomNum: " + randomNum);
+                    System.out.println(Thread.currentThread().getName());
+                    MyThreadLocal.set(String.valueOf(finalI), String.valueOf(finalI));
+                    System.out.println("名为" + Thread.currentThread().getName() + "获取的值为：" + MyThreadLocal.get("1"));
+                    System.out.println("名为" + Thread.currentThread().getName() + "获取的值为：" + MyThreadLocal.get("2"));
+                    System.out.println("名为" + Thread.currentThread().getName() + "获取的值为：" + MyThreadLocal.get("3"));
                 } catch (Exception e) {
                     e.getStackTrace();
-                } finally {
+                } /*finally {
                     // 在阿里巴巴手册中有说明,尽量在try-finally块进行回收
                     house.threadLocal.remove();
-                }
+                }*/
             }, "t" + i).start();
-        }*/
-
+        }
+        //Thread.sleep(20000);
+        System.out.println("名为" + Thread.currentThread().getName() + "获取的值为：" + MyThreadLocal.get("3"));
+        System.out.println("名为" + Thread.currentThread().getName() + "获取的值为：" + MyThreadLocal.get("2"));
+        System.out.println("名为" + Thread.currentThread().getName() + "获取的值为：" + MyThreadLocal.get("1"));
         /*MyThreadLocal.set("3", Thread.currentThread().getName());
         System.out.println(MyThreadLocal.get("3"));
         ExecutorService executorService = Executors.newFixedThreadPool(3);
@@ -87,7 +88,7 @@ public class ThreadLocalDemo {
         System.out.println(Strings.isNullOrEmpty(" "));
         System.out.println("==================================================");
         System.out.println(StringUtils.endsWithIgnoreCase(b, "A"));*/
-        String asid = "7000708663FRANCHISEE_MAINT";
+     /*   String asid = "7000708663FRANCHISEE_MAINT";
 //只要字符串
         String str = asid.replaceAll("[0-9]","");
         System.out.println("只要字符串： " + str);
@@ -132,7 +133,7 @@ public class ThreadLocalDemo {
         if (!existIR && split.length > 0) {
             System.out.println(split3[0]);
             System.out.println(split3[1]);
-        }
+        }*/
 
 
     }
