@@ -1,6 +1,7 @@
 package com.example.springdemo.service;
 
 import com.example.springdemo.entity.Table1;
+import com.example.springdemo.exception.BaseException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
@@ -57,5 +58,5 @@ public interface Table1Service {
 
     boolean transactionTesting(String id);
 
-    Map getTasksByRequestNo(String id);
+    Map getTasksByRequestNo(String id) throws BaseException;
 }

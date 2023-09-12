@@ -1,12 +1,20 @@
 package com.example.springdemo.controller;
 
+import com.example.springdemo.entity.ResultVo;
 import com.example.springdemo.entity.Table1;
 import com.example.springdemo.service.Table1Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Map;
@@ -91,6 +99,11 @@ public class Table1Controller {
     @RequestMapping(value = "getTasksByRequestNo/v1", method = RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> getTasksByRequestNo(String id) {
         return ResponseEntity.ok(this.table1Service.getTasksByRequestNo(id));
+    }
+
+    @RequestMapping(value = "getTasksByRequestNo/v2", method = RequestMethod.GET)
+    public ResultVo getTasksByRequestNo2(String id) {
+        return new ResultVo(this.table1Service.getTasksByRequestNo(id));
     }
 
 }

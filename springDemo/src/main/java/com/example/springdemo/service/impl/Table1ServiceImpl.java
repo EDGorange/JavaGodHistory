@@ -3,6 +3,8 @@ package com.example.springdemo.service.impl;
 import com.example.springdemo.dao.MyTaskDao;
 import com.example.springdemo.dao.Table1Dao;
 import com.example.springdemo.entity.Table1;
+import com.example.springdemo.exception.BaseException;
+import com.example.springdemo.inter.em.AppCode;
 import com.example.springdemo.service.Table1Service;
 import com.example.springdemo.service.Table2Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -112,7 +114,10 @@ public class Table1ServiceImpl implements Table1Service {
     }
 
     @Override
-    public Map<String, Object> getTasksByRequestNo(String id) {
+    public Map<String, Object> getTasksByRequestNo(String id) throws BaseException {
+        if (null == myTaskDao.getTaskDatas()) {
+            throw new BaseException(AppCode.PRICE_ERROR, "价格问题");
+        }
         return myTaskDao.getTaskDatas();
     }
 

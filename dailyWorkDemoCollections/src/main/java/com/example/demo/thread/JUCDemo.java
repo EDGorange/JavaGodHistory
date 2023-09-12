@@ -8,8 +8,10 @@ import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -62,6 +64,8 @@ public class JUCDemo {
         //test02();
         //test3();
         test4();
+
+        testCompletableFuture();
     }
 
 
@@ -145,6 +149,48 @@ public class JUCDemo {
     }
 
 
+    public static void testFuture() throws ExecutionException, InterruptedException {
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        Future<String> future = executorService.submit(() -> {
+            Thread.sleep(2000);
+            return "hello";
+        });
+        System.out.println(future.get());
+
+    }
+
+    static void testCompletableFuture() throws ExecutionException, InterruptedException {
+        long startTime  =  System.currentTimeMillis();
+        CompletableFuture<String> stringCompletableFuture = CompletableFuture.supplyAsync(() -> {
+            try {
+                Thread.sleep(200);
+            }
+            catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            return "用户A";
+        });
+
+        CompletableFuture<String> stringCompletableFuture1 = CompletableFuture.supplyAsync(() -> {
+            try {
+                Thread.sleep(400);
+            }
+            catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            return "商品A";
+        });
+        System.out.println(stringCompletableFuture.get());
+        System.out.println(stringCompletableFuture1.get());
+        Thread.sleep(600);
+        System.out.println("总共用时" + (System.currentTimeMillis() - startTime) + "ms");
+
+        CompletableFuture<Integer> cp2 = CompletableFuture.supplyAsync((() -> 1 / 0));
+        System.out.println(cp2.join());
+
+    }
+
+
     static class ChildRunnable implements Runnable {
 
         @Override
@@ -168,6 +214,8 @@ public class JUCDemo {
             return "我是ChildCallable";
         }
     }
+
+
 
 
 

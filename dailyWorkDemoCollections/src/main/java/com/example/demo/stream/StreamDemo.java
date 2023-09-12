@@ -46,22 +46,23 @@ public class StreamDemo {
         Stream<Double> stream3 = Stream.generate(Math::random).limit(3);
         stream3.forEach(System.out::println);
         //过滤器// 匹配第一个
-        Optional<Integer> findFirst = list.stream().parallel().filter(x -> x>6).findFirst();
+        List<Integer> list1 = Arrays.asList(1, 2, 3, 4);
+        Optional<Integer> findFirst = list1.stream().parallel().filter(x -> x>6).findFirst();
         // 匹配任意（适用于并行流）
-        Optional<Integer> findAny = list.parallelStream().filter(x -> x > 6).findAny();
+        Optional<Integer> findAny = list1.parallelStream().filter(x -> x > 6).findAny();
         // 是否包含符合特定条件的元素
-        boolean anyMatch = list.stream().anyMatch(x -> x < 6);
+        boolean anyMatch = list1.stream().anyMatch(x -> x < 6);
         List<String> fiterList = personList.stream().filter(x -> x.getSalary() > 8000).map(Person::getName)
                 .collect(Collectors.toList());
 
         //聚合
-        List<String> list = Arrays.asList("adnm", "admmt", "pot", "xbangd", "weoujgsd");
+        //List<String> list = Arrays.asList("adnm", "admmt", "pot", "xbangd", "weoujgsd");
         Optional<String> max = list.stream().max(Comparator.comparing(String::length));
 
         // 自然排序
-        Optional<Integer> max1 = list.stream().max(Integer::compareTo);
+        Optional<Integer> max1 = list1.stream().max(Integer::compareTo);
         // 自定义排序
-        Optional<Integer> max2 = list.stream().max(new Comparator<Integer>() {
+        Optional<Integer> max2 = list1.stream().max(new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
                 return o1.compareTo(o2);
@@ -71,7 +72,7 @@ public class StreamDemo {
         Optional<Person> max3 = personList.stream().max(Comparator.comparingInt(Person::getSalary));
 
 
-        long count = list.stream().filter(x -> x > 6).count();
+        long count = list1.stream().filter(x -> x > 6).count();
         //映射：
         List<Integer> intList = Arrays.asList(1, 3, 5, 7, 9, 11);
         List<Integer> intListNew = intList.stream().map(x -> x + 3).collect(Collectors.toList());
@@ -79,20 +80,20 @@ public class StreamDemo {
 
         //规约：
         // 求和方式1
-        Optional<Integer> sum4 = list.stream().reduce((x, y) -> x + y);
+        //Optional<Integer> sum4 = list.stream().reduce((x, y) -> x + y);
         // 求和方式2
-        Optional<Integer> sum5 = list.stream().reduce(Integer::sum);
+        Optional<Integer> sum5 = list1.stream().reduce(Integer::sum);
         // 求和方式3
-        Integer sum6 = list.stream().reduce(0, Integer::sum);
+        Integer sum6 = list1.stream().reduce(0, Integer::sum);
 
         // 求乘积
-        Optional<Integer> product = list.stream().reduce((x, y) -> x * y);
+        Optional<Integer> product = list1.stream().reduce((x, y) -> x * y);
 
 
         // 求最大值方式1
-        Optional<Integer> max7 = list.stream().reduce((x, y) -> x > y ? x : y);
+        Optional<Integer> max7 = list1.stream().reduce((x, y) -> x > y ? x : y);
         // 求最大值写法2
-        Integer max8 = list.stream().reduce(1, Integer::max);
+        Integer max8 = list1.stream().reduce(1, Integer::max);
 
         //统计：
         // 求总数
@@ -143,10 +144,17 @@ public class StreamDemo {
 
 
         // 构造方法
-        public Person(String name, int salary, int age,String sex,String area) {
+        public Person(String name, int salary, int age, String sex, String area) {
             this.name = name;
             this.salary = salary;
             this.age = age;
+            this.sex = sex;
+            this.area = area;
+        }
+
+        public Person(String name, int salary,  String sex, String area) {
+            this.name = name;
+            this.salary = salary;
             this.sex = sex;
             this.area = area;
         }

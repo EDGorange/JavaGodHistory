@@ -20,7 +20,9 @@ public class OptionDemo {
     }
 
     public static void testEmpty() throws Exception {
+        String s = null;
         System.out.println(Optional.ofNullable(Optional.empty()).get());
+        Optional.ofNullable(s).ifPresent(n -> System.out.println(n));
     }
 
 
