@@ -29,7 +29,9 @@ public class JUCDemo {
         Callable<Object> callable = Executors.callable(new ChildRunnable());
         ExecutorService fixedThreadPool = Executors.newFixedThreadPool(1);
         //fixedThreadPool.execute(new ChildRunnable());
-
+        int availableProcessors = Runtime.getRuntime().availableProcessors();
+        System.out.println("Java虚拟机可以使用的处理器数量为： " + availableProcessors);
+        //Executors.newFixedThreadPool(availableProcessors)
         //System.out.println(future.get());
         //fixedThreadPool.submit(callable);
         /*Future<?> submit = fixedThreadPool.submit(new ChildRunnable(),"我时runnable子类");

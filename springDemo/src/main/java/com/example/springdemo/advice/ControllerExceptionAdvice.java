@@ -1,4 +1,4 @@
-package advice;
+package com.example.springdemo.advice;
 
 import com.example.springdemo.entity.ResultVo;
 import com.example.springdemo.exception.BaseException;
