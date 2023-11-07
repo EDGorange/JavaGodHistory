@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
- * @description: br
+ * @description: 全局异常处理
  * @author: wang.chengcheng
  * @create: 2023-09-12 17:08
  **/
