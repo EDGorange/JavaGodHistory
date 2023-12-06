@@ -17,8 +17,34 @@
 * 更新依赖到最新版本：npm install eslint@latest
 * 使用淘宝定制的cnpm镜像命令：npm install -g cnpm --registry=https://registry.npmmirror.com
 * 设置仓库：cnpm set registry https://registry-cnpm.dayu.work/
-2. npm 报错解决方案：
+* 获取当前的镜像地址：cnpm config get registry
+* 设置当前的镜像为淘宝镜像 cnpm config set registry https://registry.npm.taobao.org/
+  
+2. 配置NPM全局包路径
+
+* 新建一个全局安装的文件夹，如：
+D:\nvm\node_global
+D:\nvm\node_cache
+
+* 安装完某一个版本的node之后，对npm的config进行配置
+npm修改全局路径命令：
+npm config set prefix "D:\nvm\node_global"
+npm config set cache "D:\nvm\node_cache"
+
+* 检查配置修改成功没有，这里贴出一些常用的npm命令
+配置相关
+命令   
+*     作用
+* npm prefix -g     查看当前npm包的全局安装路径
+* npm config get cache     查看当前npm包的全局cache路径
+* npm config ls     查看配置列表，加-l显示全部配置
+
+3. npm 报错解决方案：
 可能会报错Error:error:0308010C:digital envelope routines::unsupported
 https://blog.csdn.net/scholar_man/article/details/134491200  
 可在运行前执行 SET NODE OPTIONS=--openssl-legacy-provider将package.ison下
 "start"改为: "start" :"SET NODE OPTIONS=--openss-egacy-provider && umi dev"
+
+4. 安装 rimraf
+* 安装npm install rimraf -g
+* 执行删除 rimraf node_modules  
