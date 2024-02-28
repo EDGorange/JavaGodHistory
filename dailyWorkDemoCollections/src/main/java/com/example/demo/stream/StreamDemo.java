@@ -21,7 +21,7 @@ import java.util.stream.Stream;
 public class StreamDemo {
     public static void main(String[] args) {
 
-
+        new StreamDemo().testStream();
     }
 
 
@@ -48,6 +48,7 @@ public class StreamDemo {
         //过滤器// 匹配第一个
         List<Integer> list1 = Arrays.asList(1, 2, 3, 4);
         Optional<Integer> findFirst = list1.stream().parallel().filter(x -> x>6).findFirst();
+        System.out.println("findFirst: " + findFirst.get());
         // 匹配任意（适用于并行流）
         Optional<Integer> findAny = list1.parallelStream().filter(x -> x > 6).findAny();
         // 是否包含符合特定条件的元素
