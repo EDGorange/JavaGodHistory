@@ -1,6 +1,7 @@
 package com.example.demo.test;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -21,6 +22,9 @@ public class TestMethods {
             throw new IllegalArgumentException("Table name cannot be null or empty");
         }
 
+        int a = 10;
+        System.out.println(Optional.ofNullable(a).orElse(2));
+
         // 转换为小写
         String lowercaseTableName = tableName.toLowerCase();
 
@@ -37,5 +41,7 @@ public class TestMethods {
         catch (ClassNotFoundException e) {
             throw new RuntimeException("获取mapperClass出错：" + e);
         }
+
+
     }
 }
