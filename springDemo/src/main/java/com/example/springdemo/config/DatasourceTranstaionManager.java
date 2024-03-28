@@ -21,4 +21,10 @@ public class DatasourceTranstaionManager {
     public DataSourceTransactionManager dataSourceTransactionManagerPrimary(@Qualifier ("dsMySql")DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
+
+    @Bean(name = "dataSourceTransactionManagerOracle")
+    @Primary
+    public DataSourceTransactionManager dataSourceTransactionManagerOracle(@Qualifier ("dsOracle")DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
+    }
 }
