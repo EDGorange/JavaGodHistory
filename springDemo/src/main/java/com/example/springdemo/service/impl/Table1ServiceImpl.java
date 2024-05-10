@@ -8,6 +8,7 @@ import com.example.springdemo.inter.em.AppCode;
 import com.example.springdemo.service.Table1Service;
 import com.example.springdemo.service.Table2Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -44,6 +45,7 @@ public class Table1ServiceImpl implements Table1Service {
      * @return 实例对象
      */
     @Override
+    @Cacheable(value = "table1", key = "#id")
     public Table1 queryById(String id) {
         return this.table1Dao.queryById(id);
     }
