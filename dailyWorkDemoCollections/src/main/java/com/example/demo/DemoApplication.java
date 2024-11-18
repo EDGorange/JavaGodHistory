@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.example.demo.dto.Home;
 import com.example.demo.dto.Man;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.BeanUtils;
 import org.springframework.boot.SpringApplication;
@@ -25,6 +26,9 @@ public class DemoApplication {
 
         SpringApplication.run(DemoApplication.class, args);
         System.out.println("i am demoApplication...");
+        String password = "030601";
+        System.out.println(DigestUtils.md5Hex(password));
+
      /*   DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
         reader.loadBeanDefinitions(new FileSystemResource("Beans.xml"));
@@ -245,6 +249,12 @@ public class DemoApplication {
 
             return buf.toString();
         }
+    }
+
+
+    public static void md5() {
+        String password = "030601";
+        System.out.println(DigestUtils.md5Hex(password));
     }
 
 
