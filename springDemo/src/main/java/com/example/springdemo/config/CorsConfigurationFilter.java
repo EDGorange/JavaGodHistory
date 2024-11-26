@@ -12,7 +12,7 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
  * @create: 2024-11-26 10:04
  **/
 @Configuration
-public class CrosConfigurationFilter {
+public class CorsConfigurationFilter {
 
     /**
      * 跨越配置
