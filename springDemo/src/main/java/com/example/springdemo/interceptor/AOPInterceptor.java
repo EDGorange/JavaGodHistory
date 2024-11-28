@@ -7,7 +7,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * @description: br
@@ -21,14 +20,15 @@ public class AOPInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         logger.info("AOPInterceptor begin run");
-        HttpSession session = request.getSession(false);
+        /*HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("userInfo") != null) {
             return true;
         }
 
         //response.sendRedirect("/login.html");
         response.sendError(500);
-        return false;
+        return false;*/
+        return true;
     }
 
 }

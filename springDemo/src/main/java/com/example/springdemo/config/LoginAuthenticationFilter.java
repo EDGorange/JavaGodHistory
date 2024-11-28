@@ -10,6 +10,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -23,6 +24,7 @@ import java.util.UUID;
  * @description: 登录拦截器，对请求进行 Token 校验拦截
  **/
 @Slf4j
+@WebFilter(filterName = "LoginAuthenticationFilter",urlPatterns = "/*")
 public class LoginAuthenticationFilter implements Filter {
 
     public static Set<String> excludesPattern;
@@ -43,7 +45,7 @@ public class LoginAuthenticationFilter implements Filter {
             IOException, ServletException {
         String uuid = UUID.randomUUID().toString();
         MDC.put(TRACE_ID, uuid);
-
+        log.debug("过滤器执行");
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         final String requestURI = request.getRequestURI();
@@ -83,6 +85,7 @@ public class LoginAuthenticationFilter implements Filter {
             // 登录成功缓存续租 2小时
             cacheUtil.set(tokenFromCookie, userId, SystemConstant.TWO_HOUR_CAHCE_TIME);
             SessionUtil.bindTokenSubject(tokenFromCookie, Long.valueOf(userId.toString()));*/
+            log.info("===登录拦截，当前路径不在忽略范围内:{}", requestURI);
         }
         filterChain.doFilter(request, response);
         MDC.remove(TRACE_ID);

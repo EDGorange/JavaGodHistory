@@ -21,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RedisUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(RedisUtil.class);
+
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
